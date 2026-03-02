@@ -30,7 +30,7 @@ GIT_AI_VERSION=v0.1.0 GIT_AI_INSTALL_DIR=/usr/local/bin \
 ### From crates.io
 
 ```sh
-cargo install git-ai
+cargo install gitit
 ```
 
 ### From source
