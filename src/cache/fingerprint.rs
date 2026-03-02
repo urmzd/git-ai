@@ -9,10 +9,7 @@ use std::process::Command;
 /// - Untracked files: hash their full content
 ///
 /// Returns a sorted map of `file_path -> hex_hash`.
-pub fn compute_fingerprints(
-    repo_root: &Path,
-    staged_only: bool,
-) -> BTreeMap<String, String> {
+pub fn compute_fingerprints(repo_root: &Path, staged_only: bool) -> BTreeMap<String, String> {
     let mut fingerprints = BTreeMap::new();
 
     if staged_only {
@@ -52,9 +49,7 @@ pub fn compute_fingerprints(
         }
 
         // Untracked files: hash content
-        if let Some(untracked) =
-            git(repo_root, &["ls-files", "--others", "--exclude-standard"])
-        {
+        if let Some(untracked) = git(repo_root, &["ls-files", "--others", "--exclude-standard"]) {
             for file in untracked.lines().filter(|l| !l.is_empty()) {
                 let full_path = repo_root.join(file);
                 if let Ok(content) = std::fs::read(&full_path) {

@@ -41,8 +41,7 @@ impl CacheManager {
         let dir = cache_dir(repo_root)?;
         let fingerprints = compute_fingerprints(repo_root, staged_only);
 
-        let state_key =
-            compute_state_key(&fingerprints, staged_only, user_message, backend, model);
+        let state_key = compute_state_key(&fingerprints, staged_only, user_message, backend, model);
 
         Some(Self {
             repo_root: repo_root.to_path_buf(),
@@ -153,10 +152,7 @@ struct FileDelta {
     removed: Vec<String>,
 }
 
-fn compute_delta(
-    old: &BTreeMap<String, String>,
-    new: &BTreeMap<String, String>,
-) -> FileDelta {
+fn compute_delta(old: &BTreeMap<String, String>, new: &BTreeMap<String, String>) -> FileDelta {
     let mut unchanged = Vec::new();
     let mut changed = Vec::new();
     let mut added = Vec::new();

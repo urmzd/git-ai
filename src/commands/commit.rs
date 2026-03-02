@@ -177,8 +177,7 @@ pub async fn run(args: &CommitArgs, backend_config: &BackendConfig) -> Result<()
         }
         _ => {
             // Miss or no cache
-            let spinner =
-                ui::spinner(&format!("Analyzing changes with {}...", backend_name));
+            let spinner = ui::spinner(&format!("Analyzing changes with {}...", backend_name));
 
             let user_prompt = build_user_prompt(args, &repo)?;
 
@@ -214,10 +213,9 @@ pub async fn run(args: &CommitArgs, backend_config: &BackendConfig) -> Result<()
     // Display plan with cache status indicator
     match &cache_status {
         CacheStatus::Cached => println!("[cached]"),
-        CacheStatus::Incremental {
-            cached,
-            reanalyzed,
-        } => println!("[incremental: {cached} cached, {reanalyzed} re-analyzed]"),
+        CacheStatus::Incremental { cached, reanalyzed } => {
+            println!("[incremental: {cached} cached, {reanalyzed} re-analyzed]")
+        }
         CacheStatus::None => {}
     }
     ui::display_plan(&plan);
@@ -273,8 +271,8 @@ fn build_incremental_prompt(
 ) -> Result<String> {
     let mut prompt = build_user_prompt(args, repo)?;
 
-    let previous_json = serde_json::to_string_pretty(previous_plan)
-        .unwrap_or_else(|_| "{}".to_string());
+    let previous_json =
+        serde_json::to_string_pretty(previous_plan).unwrap_or_else(|_| "{}".to_string());
 
     prompt.push_str(&format!(
         "\n\n--- INCREMENTAL HINTS ---\n\

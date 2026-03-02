@@ -1,5 +1,5 @@
-use crate::cache::store;
 use crate::cache::CacheManager;
+use crate::cache::store;
 use crate::git::GitRepo;
 use anyhow::Result;
 
