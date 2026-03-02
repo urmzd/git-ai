@@ -274,7 +274,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "git-ai"
+name = "gitit"
 version = "0.1.0"
 dependencies = [
  "anyhow",

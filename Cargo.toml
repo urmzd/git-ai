@@ -1,5 +1,5 @@
 [package]
-name = "git-ai"
+name = "gitit"
 version = "0.1.0"
 edition = "2024"
 description = "AI-powered git commands for the lazy"
