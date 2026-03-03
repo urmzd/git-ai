@@ -1,16 +1,16 @@
 #!/bin/sh
-# install.sh — Installs the git-ai binary from GitHub releases.
+# install.sh — Installs the gitit binary from GitHub releases.
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/urmzd/git-ai/main/install.sh | sh
+#   curl -fsSL https://raw.githubusercontent.com/urmzd/gitit/main/install.sh | sh
 #
 # Environment variables:
-#   GIT_AI_VERSION     — version to install (e.g. "v0.1.0"); defaults to latest
-#   GIT_AI_INSTALL_DIR — installation directory; defaults to $HOME/.local/bin
+#   GITIT_VERSION     — version to install (e.g. "v0.1.0"); defaults to latest
+#   GITIT_INSTALL_DIR — installation directory; defaults to $HOME/.local/bin
 
 set -eu
 
-REPO="urmzd/git-ai"
+REPO="urmzd/gitit"
 
 main() {
     os=$(uname -s)
@@ -39,8 +39,8 @@ main() {
             ;;
     esac
 
-    if [ -n "${GIT_AI_VERSION:-}" ]; then
-        tag="$GIT_AI_VERSION"
+    if [ -n "${GITIT_VERSION:-}" ]; then
+        tag="$GITIT_VERSION"
     else
         tag=$(curl -fsSL "https://api.github.com/repos/$REPO/releases/latest" \
             | sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p')
@@ -49,17 +49,17 @@ main() {
         fi
     fi
 
-    artifact="git-ai-${target}"
+    artifact="gitit-${target}"
     url="https://github.com/$REPO/releases/download/${tag}/${artifact}"
 
-    install_dir="${GIT_AI_INSTALL_DIR:-$HOME/.local/bin}"
+    install_dir="${GITIT_INSTALL_DIR:-$HOME/.local/bin}"
     mkdir -p "$install_dir"
 
-    echo "Downloading git-ai $tag for $target..."
-    curl -fsSL "$url" -o "$install_dir/git-ai"
-    chmod +x "$install_dir/git-ai"
+    echo "Downloading gitit $tag for $target..."
+    curl -fsSL "$url" -o "$install_dir/gitit"
+    chmod +x "$install_dir/gitit"
 
-    echo "Installed git-ai to $install_dir/git-ai"
+    echo "Installed gitit to $install_dir/gitit"
 
     case ":$PATH:" in
         *":$install_dir:"*) ;;
@@ -87,14 +87,14 @@ add_to_path() {
         if ! grep -q "$install_dir" "$profile" 2>/dev/null; then
             mkdir -p "$(dirname "$profile")"
             echo "" >> "$profile"
-            echo "# Added by git-ai installer" >> "$profile"
+            echo "# Added by gitit installer" >> "$profile"
             echo "set -Ux fish_user_paths $install_dir \$fish_user_paths" >> "$profile"
             echo "Added $install_dir to $profile"
             echo "Restart your shell or run: source $profile"
         fi
     elif [ -n "$profile" ] && ! grep -q "$install_dir" "$profile" 2>/dev/null; then
         echo "" >> "$profile"
-        echo "# Added by git-ai installer" >> "$profile"
+        echo "# Added by gitit installer" >> "$profile"
         echo "export PATH=\"$install_dir:\$PATH\"" >> "$profile"
         echo "Added $install_dir to $profile"
         echo "Restart your shell or run: source $profile"

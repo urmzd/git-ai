@@ -4,10 +4,10 @@ version = "0.1.0"
 edition = "2024"
 description = "AI-powered git commands for the lazy"
 license = "Apache-2.0"
-repository = "https://github.com/urmzd/git-ai"
+repository = "https://github.com/urmzd/gitit"
 
 [[bin]]
-name = "git-ai"
+name = "gitit"
 path = "src/main.rs"
 
 [dependencies]

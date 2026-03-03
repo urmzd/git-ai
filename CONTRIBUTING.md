@@ -1,12 +1,12 @@
-# Contributing to git-ai
+# Contributing to gitit
 
 Thanks for your interest in contributing! Here's how to get started.
 
 ## Development setup
 
 ```sh
-git clone https://github.com/urmzd/git-ai.git
-cd git-ai
+git clone https://github.com/urmzd/gitit.git
+cd gitit
 cargo build
 ```
 
@@ -28,11 +28,11 @@ cargo check && cargo clippy -- -D warnings && cargo test
 
 ## Commit style
 
-This project follows [Angular Conventional Commits](https://www.conventionalcommits.org/). Use `git-ai commit` itself to generate your commit messages if you'd like.
+This project follows [Angular Conventional Commits](https://www.conventionalcommits.org/). Use `gitit commit` itself to generate your commit messages if you'd like.
 
 ## Reporting issues
 
-Open an issue at <https://github.com/urmzd/git-ai/issues> with:
+Open an issue at <https://github.com/urmzd/gitit/issues> with:
 
 - What you expected
 - What happened instead

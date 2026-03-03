@@ -22,11 +22,11 @@ pub struct CacheEntry {
 }
 
 /// Return the cache directory for a given repo root:
-/// `~/.cache/git-ai/<repo-id>/entries/`
+/// `~/.cache/gitit/<repo-id>/entries/`
 pub fn cache_dir(repo_root: &Path) -> Option<PathBuf> {
     let base = dirs::cache_dir()?;
     let repo_id = &sha256_hex(repo_root.to_string_lossy().as_bytes())[..16];
-    Some(base.join("git-ai").join(repo_id).join("entries"))
+    Some(base.join("gitit").join(repo_id).join("entries"))
 }
 
 pub fn entry_path(dir: &Path, state_key: &str) -> PathBuf {
@@ -120,7 +120,7 @@ pub fn clear(dir: &Path) -> Result<usize> {
 /// Clear all repos' caches.
 pub fn clear_all() -> Result<usize> {
     let base = dirs::cache_dir()
-        .map(|d| d.join("git-ai"))
+        .map(|d| d.join("gitit"))
         .filter(|d| d.exists());
 
     let Some(base) = base else {

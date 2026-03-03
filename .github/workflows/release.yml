@@ -117,13 +117,13 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TAG="${{ needs.release.outputs.tag }}"
-          if [ -f "target/${{ matrix.target }}/release/git-ai.exe" ]; then
-            cp "target/${{ matrix.target }}/release/git-ai.exe" "git-ai-${{ matrix.target }}.exe"
-            gh release upload "$TAG" "git-ai-${{ matrix.target }}.exe" --clobber
+          if [ -f "target/${{ matrix.target }}/release/gitit.exe" ]; then
+            cp "target/${{ matrix.target }}/release/gitit.exe" "gitit-${{ matrix.target }}.exe"
+            gh release upload "$TAG" "gitit-${{ matrix.target }}.exe" --clobber
           else
-            cp "target/${{ matrix.target }}/release/git-ai" "git-ai-${{ matrix.target }}"
-            chmod +x "git-ai-${{ matrix.target }}"
-            gh release upload "$TAG" "git-ai-${{ matrix.target }}" --clobber
+            cp "target/${{ matrix.target }}/release/gitit" "gitit-${{ matrix.target }}"
+            chmod +x "gitit-${{ matrix.target }}"
+            gh release upload "$TAG" "gitit-${{ matrix.target }}" --clobber
           fi
         shell: bash
 

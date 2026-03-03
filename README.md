@@ -1,4 +1,4 @@
-# git-ai
+# gitit
 
 AI-powered git commands for the lazy. Analyzes your changes and generates atomic, conventional commits automatically.
 
@@ -17,14 +17,14 @@ AI-powered git commands for the lazy. Analyzes your changes and generates atomic
 ### Quick install (Linux/macOS)
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/urmzd/git-ai/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/urmzd/gitit/main/install.sh | sh
 ```
 
 You can pin a version or change the install directory:
 
 ```sh
-GIT_AI_VERSION=v0.1.0 GIT_AI_INSTALL_DIR=/usr/local/bin \
-  curl -fsSL https://raw.githubusercontent.com/urmzd/git-ai/main/install.sh | sh
+GITIT_VERSION=v0.1.0 GITIT_INSTALL_DIR=/usr/local/bin \
+  curl -fsSL https://raw.githubusercontent.com/urmzd/gitit/main/install.sh | sh
 ```
 
 ### From crates.io
@@ -36,8 +36,8 @@ cargo install gitit
 ### From source
 
 ```sh
-git clone https://github.com/urmzd/git-ai.git
-cd git-ai
+git clone https://github.com/urmzd/gitit.git
+cd gitit
 cargo install --path .
 ```
 
@@ -54,22 +54,22 @@ At least one AI backend CLI must be installed:
 
 ```sh
 # Analyze all changes and create atomic commits
-git-ai commit
+gitit commit
 
 # Only analyze staged changes
-git-ai commit --staged
+gitit commit --staged
 
 # Dry run (preview plan without executing)
-git-ai commit --dry-run
+gitit commit --dry-run
 
 # Skip confirmation prompt
-git-ai commit --yes
+gitit commit --yes
 
 # Add context for the AI
-git-ai commit --message "focus on the auth refactor"
+gitit commit --message "focus on the auth refactor"
 
 # Bypass cache (always call AI)
-git-ai commit --no-cache
+gitit commit --no-cache
 ```
 
 ### Cache management
@@ -78,34 +78,34 @@ The cache stores commit plans keyed on file content fingerprints. Identical chan
 
 ```sh
 # Show cached entries for this repo
-git-ai cache status
+gitit cache status
 
 # Clear cache for this repo
-git-ai cache clear
+gitit cache clear
 
 # Clear cache for all repos
-git-ai cache clear --all
+gitit cache clear --all
 ```
 
-Cache location: `~/.cache/git-ai/<repo-id>/entries/` (XDG-compliant). Entries expire after 24 hours with an LRU cap of 20 per repo.
+Cache location: `~/.cache/gitit/<repo-id>/entries/` (XDG-compliant). Entries expire after 24 hours with an LRU cap of 20 per repo.
 
 ### Other commands
 
 ```sh
 # AI code review
-git-ai review
+gitit review
 
 # Suggest branch name
-git-ai branch
+gitit branch
 
 # Generate PR description
-git-ai pr
+gitit pr
 
 # Explain recent commits
-git-ai explain
+gitit explain
 
 # Ask questions about the repo
-git-ai ask "how does authentication work?"
+gitit ask "how does authentication work?"
 ```
 
 ## Configuration
@@ -114,10 +114,10 @@ All options can be set via CLI flags or environment variables:
 
 | Flag | Env var | Description |
 |------|---------|-------------|
-| `--backend` | `GIT_AI_BACKEND` | `claude` or `gemini` (auto-detected if unset) |
-| `--model` | `GIT_AI_MODEL` | Model name (e.g. `haiku`, `sonnet`) |
-| `--budget` | `GIT_AI_BUDGET` | Max budget in USD, Claude only (default: `0.50`) |
-| `--debug` | `GIT_AI_DEBUG` | Enable debug output |
+| `--backend` | `GITIT_BACKEND` | `claude` or `gemini` (auto-detected if unset) |
+| `--model` | `GITIT_MODEL` | Model name (e.g. `haiku`, `sonnet`) |
+| `--budget` | `GITIT_BUDGET` | Max budget in USD, Claude only (default: `0.50`) |
+| `--debug` | `GITIT_DEBUG` | Enable debug output |
 
 ## How caching works
 

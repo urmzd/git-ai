@@ -9,22 +9,22 @@ use ai::{Backend, BackendConfig};
 use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
-#[command(name = "git-ai", about = "AI-powered git commands for the lazy")]
+#[command(name = "gitit", about = "AI-powered git commands for the lazy")]
 struct Cli {
     /// AI backend to use
-    #[arg(long, global = true, env = "GIT_AI_BACKEND")]
+    #[arg(long, global = true, env = "GITIT_BACKEND")]
     backend: Option<Backend>,
 
     /// AI model to use
-    #[arg(long, global = true, env = "GIT_AI_MODEL")]
+    #[arg(long, global = true, env = "GITIT_MODEL")]
     model: Option<String>,
 
     /// Max budget in USD (claude only)
-    #[arg(long, global = true, env = "GIT_AI_BUDGET", default_value = "0.50")]
+    #[arg(long, global = true, env = "GITIT_BUDGET", default_value = "0.50")]
     budget: f64,
 
     /// Enable debug output
-    #[arg(long, global = true, env = "GIT_AI_DEBUG")]
+    #[arg(long, global = true, env = "GITIT_DEBUG")]
     debug: bool,
 
     #[command(subcommand)]
