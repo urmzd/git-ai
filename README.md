@@ -1,6 +1,19 @@
-# gitit
+<p align="center">
+  <h1 align="center">gitit</h1>
+  <p align="center">
+    AI-powered git commands for the lazy. Analyzes your changes and generates atomic, conventional commits automatically.
+    <br /><br />
+    <a href="https://github.com/urmzd/gitit/releases">Download</a>
+    &middot;
+    <a href="https://github.com/urmzd/gitit/issues">Report Bug</a>
+    &middot;
+    <a href="https://crates.io/crates/gitit">Crates.io</a>
+  </p>
+</p>
 
-AI-powered git commands for the lazy. Analyzes your changes and generates atomic, conventional commits automatically.
+<p align="center">
+  <a href="https://github.com/urmzd/gitit/actions/workflows/ci.yml"><img src="https://github.com/urmzd/gitit/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+</p>
 
 ## Features
 

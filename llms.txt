@@ -1,0 +1,24 @@
+# gitit
+
+> AI-powered git commands for the lazy. Analyzes your changes and generates atomic, conventional commits automatically. Supports multiple AI backends (Claude CLI, Gemini CLI), two-tier caching to avoid redundant AI calls, code review, branch naming, PR generation, and freeform repo Q&A. Single Rust binary.
+
+## Docs
+
+- [README](https://github.com/urmzd/gitit/blob/main/README.md): Installation, usage, caching, and configuration
+- [AGENTS.md](https://github.com/urmzd/gitit/blob/main/AGENTS.md): Architecture and development guide
+- [CHANGELOG](https://github.com/urmzd/gitit/blob/main/CHANGELOG.md): Version history
+
+## API / Key Files
+
+- [src/main.rs](https://github.com/urmzd/gitit/blob/main/src/main.rs): CLI entry point
+- [src/commands/commit.rs](https://github.com/urmzd/gitit/blob/main/src/commands/commit.rs): Smart commit planning and execution
+- [src/commands/review.rs](https://github.com/urmzd/gitit/blob/main/src/commands/review.rs): AI-powered code review
+- [src/commands/pr.rs](https://github.com/urmzd/gitit/blob/main/src/commands/pr.rs): PR description generation
+- [src/ai/mod.rs](https://github.com/urmzd/gitit/blob/main/src/ai/mod.rs): AI backend abstraction (Claude, Gemini, Copilot)
+- [src/cache/mod.rs](https://github.com/urmzd/gitit/blob/main/src/cache/mod.rs): Two-tier caching (exact-match and incremental)
+- [Cargo.toml](https://github.com/urmzd/gitit/blob/main/Cargo.toml): Package metadata and dependencies
+
+## Optional
+
+- [CONTRIBUTING](https://github.com/urmzd/gitit/blob/main/CONTRIBUTING.md): How to contribute
+- [Skill](https://github.com/urmzd/gitit/blob/main/skills/gitit/SKILL.md): Agent skill for AI-powered git operations
